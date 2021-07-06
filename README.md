@@ -12,7 +12,7 @@ Once the app is started, the CLI app should ask for the products through "Comman
 
 ## Technologies Used
  1. Node JS (v14.16.0)
- 2. HTML (v5)
+ 2. Express JS
  3. MySQL (v8.0.7)
 
 ## Project Set Up
