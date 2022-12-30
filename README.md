@@ -1,58 +1,18 @@
 
-# CLI Shopping Cart Application (2021)
+# CLI Shopping Cart Application
+By [Amburi Roy](https://www.linkedin.com/in/amburi/)
 
-A CLI Shopping Application which will allow users to add products to shopping a cart and review the total price once the shopping is done.
+CLI shopping application allows users to add products to a shopping cart and review the total price once the purchase is complete. 
 
-Once the app is started, the CLI app should ask for the products through "Command Prompt" user wanted to add to shopping cart. Each product will be separated by new line or enter mark. Product count could be mentioned with space.
-
-** _CLI: Command Line Interface which a user could run the program in a terminal_
-
-
-# Solution
-
-## Technologies Used
- 1. Node JS (v14.16.0)
- 2. Express JS
- 3. MySQL (v8.0.7)
-
-## Project Set Up
-
-1. Install <a href="https://nodejs.org/en/download/">Node JS</a>.
-2. Clone the <a href="codebase">codebase</a>
-3. Install NPM 
-```
-npm install
-```
-4. Create MySQL database. Import following files - <a href="database/init.sql">init.sql</a> and <a href="database/ecart.sql">ecart.sql</a>.
-
-## Project Execute/Run
-
-Now run the application:
+Once the application is launched, the CLI app will ask for the products the user wants to add to the shopping cart via command prompt. Each product will be separated by a new line or enter symbol. Product quantity can be entered with spaces.
 
 ```
-$ cd codebase
-$ node ecart.js
+❯ Apple 2
+❯ Imported Wine 1
+❯ Banan
 ```
-
-Then enter Product Name and Quantity `<ProductName> <Quantity>` in each line. Press `Ctrl+D` if you are done with shopping.
-
+Once user completes the purchase, user will be able to review the product and total price.
 ```
-$ Apple 2
-$ Imported Wine 1
-$ Banana 6
-```
-_(Press Ctrl+D to exit)_
-
-Once the products are selected, the following lines will be displayed in CLI.
-
-**Output:**
-
-```
-PS F:\shopping-cart-app\codebase> node ecart.js
-Apple 2
-Imported Wine 1
-Banana 6
-
 Selected Products
 
 Name: Apple
@@ -82,49 +42,41 @@ Total: Rs 1479
 Cess: Rs 1.68
 Grand Total: Rs 1480.68
 ```
-### Explain Output
+**Selected Products**: List the chosen products with name, price, applicable tax, quantity, import duty charges, and total cost. <br />
 
-1. **Selected Products:** Give the list of selected product with name, price, applicable tax, quantity, import duty charges and total cost.
+**Calculation of Total Price**:
+- Discount calculation: If the total price (not including tax) is above 5000, the discount is 5% on the total price.
+- Tax Calculation: The tax for each product will vary based on the product category. For example, the tax will be 5% for fruits and 30% for liquor. There will be an additional import duty of 12% on imported goods.
+- Calculation of Cess: Cess, which is 4%, will be calculated on the tax amount.
 
+---
+## Technologies used
+* Node v16.19.0
+* Npm 8.19.3
+* MySQL v8.0.31
+* [Bluebird](http://bluebirdjs.com/docs/getting-started.html) (Javascript Library) v3.7.2
+
+---
+## How to run
+
+* Install node and npm
+* Install dependencies `❯ npm install`
+* Download/Clone <a href="codebase">codebase</a>
+* Create MySQL database and import [init.sql](database/init.sql) and [ecart.sql](database/ecart.sql) files.
+* Run the application `❯ node ecart.js`
+* Enter the product name and quantity (`<productName> <quantity>`) in each line to add the product to the cart.
+* Press `Ctrl+D`  to finish your shopping.
+* Review the full shopping cart and total price once purchase is complete.
+---
+### Configuration
+
+`./codebase/db.js` update database configuration
 ```
-Selected Products
-
-Name: Apple
-Price: 50
-Tax: 12
-Quantity: 2
-Cost: 112
-
-
-Name: Imported Wine
-Price: 1000
-Tax: 18
-Quantity: 1
-ImportDuty: 120
-Cost: 1300
-
-
-Name: Banana
-Price: 10
-Tax: 12
-Quantity: 6
-Cost: 67.2
+var pool = mysql.createPool({
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "ecart",
+    port: 3306
+});
 ```
-
-2. **Total Value Calculation:**
-
-```
-Total Discount: Rs 0
-Total: Rs 1479
-Cess: Rs 1.68
-Grand Total: Rs 1480.68
-```
-
-- <u>Discount Calculation:</u> If the Total price (not including Taxes) is above 5000 then discount is 5% on the Total price
-- <u>Tax Calucation:</u>
-    - Tax for each Product will vary based on Product Category. For e.g., Tax will be 5% for Fruits, and 30% for Liquor.
-    - Imported product will have an additional Import Duty of 12%.
-- <u>Cess Calculation:</u> Cess which is 4% will be calculated for Tax amount.
-
-
-
