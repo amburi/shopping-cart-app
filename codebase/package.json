@@ -1,15 +1,15 @@
 {
-  "name": "js",
+  "name": "shopping-cart-app-cli",
   "version": "1.0.0",
-  "description": "",
+  "description": "A CLI Shopping Application which will allow users to add products to shopping a cart and review the total price once the shopping is done.",
+  "author": "Amburi Roy <amburi.roy@gmail.com>",
+  "license": "ISC",
   "main": "db.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "bluebird": "^3.7.2",
-    "mysql": "^2.18.1"
+    "mysql": "^8.0.31"
   }
 }
